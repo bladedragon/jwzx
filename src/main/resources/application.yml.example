@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url:
+    username:
+    password:
+    driver-class-name: com.mysql.jdbc.Driver
+
+  redis:
+    host:
+    password:
+    port: 6379
+    jedis:
+      pool:
+        max-wait:
+        max-active: 8
+        min-idle: 0
+    timeout: 500ms
+    database: 2
+  jpa:
+    show-sql: true
+
+jwzx.chengji: http://jwc.cqupt.edu.cn/showStuQmcj.php
+jwzx.emptyroom: http://jwzx.cqupt.edu.cn/jssq/jssqEmptyRoom.php?zc=2&xq=1&sd=34
+
