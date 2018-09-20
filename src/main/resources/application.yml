@@ -4,7 +4,27 @@ spring:
     username: root
     password:
     driver-class-name: com.mysql.jdbc.Driver
-
+#    type: com.alibaba.druid.pool.DruidDataSource
+#      #最大活跃数
+#      maxActive: 20
+#      #初始化数量
+#      initialSize: 1
+#      #最大连接等待超时时间
+#      maxWait: 60000
+#      #打开PSCache，并且指定每个连接PSCache的大小
+#      poolPreparedStatements: true
+#      maxPoolPreparedStatementPerConnectionSize: 20
+#      #通过connectionProperties属性来打开mergeSql功能；慢SQL记录
+#      #connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+#      minIdle: 1
+#      timeBetweenEvictionRunsMillis: 60000
+#      minEvictableIdleTimeMillis: 300000
+#      validationQuery: select 1 from dual
+#      testWhileIdle: true
+#      testOnBorrow: false
+#      testOnReturn: false
+#      #配置监控统计拦截的filters，去掉后监控界面sql将无法统计,'wall'用于防火墙
+#      filters: stat, wall, log4j
   redis:
     host: localhost
     password:
@@ -19,6 +39,17 @@ spring:
   jpa:
     show-sql: true
 
-jwzx.chengji: http://jwc.cqupt.edu.cn/showStuQmcj.php
-jwzx.emptyroom: http://jwzx.cqupt.edu.cn/jssq/jssqEmptyRoom.php?zc=2&xq=1&sd=34
 
+jwzx.chengji: http://jwc.cqupt.edu.cn/showStuQmcj.php
+jwzx.emptyroom: http://jwzx.cqupt.edu.cn/jssq/jssqEmptyRoom.php?
+jwzx.newslist: http://jwzx.cqupt.edu.cn/data/json_files.php?
+jwzx.newscontent: http://jwzx.cqupt.edu.cn/fileShowContent.php?
+jwzx.verify: http://hongyan.cqupt.edu.cn/api/verify
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+  returnPageInfo: check

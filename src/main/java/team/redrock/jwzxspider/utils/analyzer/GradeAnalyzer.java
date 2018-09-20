@@ -45,6 +45,7 @@ public class GradeAnalyzer {
                 GradeInfo gradeInfo = new GradeInfo();
                 gradeInfo.setProperty(tr.getElementsByTag("td").get(0).text());
                 String term = tr.getElementsByTag("td").get(1).text();
+                System.out.println("trem:"+term);
                 response.setTerm(term);
                 gradeInfo.setTerm(term);
                 gradeInfo.setStudent(tr.getElementsByTag("td").get(2).text());
