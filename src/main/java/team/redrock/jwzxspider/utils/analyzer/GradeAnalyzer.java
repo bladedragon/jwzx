@@ -25,7 +25,7 @@ public class GradeAnalyzer {
         }
         if(document.body().text().equals("未查到匹配学生信息..")){
     response.setStatus(415);
-            ;
+
     return results;
         }
 
@@ -36,16 +36,16 @@ public class GradeAnalyzer {
         Elements trs = pTable.getElementsByTag("tbody").get(0).children();
 //        System.out.println(trs);
         trs.forEach(tr ->{
-            System.out.println("tr:"+tr);
+//            System.out.println("tr:"+tr);
             if(!tr.children().isEmpty()){
                 Element element = tr.getElementsByTag("td").get(0);
-                System.out.println(element);
+//                System.out.println(element);
             if(!element.text().equals( "课程类型"))
             {
                 GradeInfo gradeInfo = new GradeInfo();
                 gradeInfo.setProperty(tr.getElementsByTag("td").get(0).text());
                 String term = tr.getElementsByTag("td").get(1).text();
-                System.out.println("trem:"+term);
+//                System.out.println("trem:"+term);
                 response.setTerm(term);
                 gradeInfo.setTerm(term);
                 gradeInfo.setStudent(tr.getElementsByTag("td").get(2).text());

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url:
+    url: jdbc:
     username:
     password:
     driver-class-name: com.mysql.jdbc.Driver
@@ -8,7 +8,7 @@ spring:
   redis:
     host:
     password:
-    port: 6379
+    port:
     jedis:
       pool:
         max-wait:
@@ -19,6 +19,17 @@ spring:
   jpa:
     show-sql: true
 
-jwzx.chengji: http://jwc.cqupt.edu.cn/showStuQmcj.php
-jwzx.emptyroom: http://jwzx.cqupt.edu.cn/jssq/jssqEmptyRoom.php?zc=2&xq=1&sd=34
 
+jwzx.chengji: http://jwc.cqupt.edu.cn/showStuQmcj.php
+jwzx.emptyroom: http://jwzx.cqupt.edu.cn/jssq/jssqEmptyRoom.php?
+jwzx.newslist: http://jwzx.cqupt.edu.cn/data/json_files.php?
+jwzx.newscontent: http://jwzx.cqupt.edu.cn/fileShowContent.php?
+jwzx.verify: http://hongyan.cqupt.edu.cn/api/verify
+
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+  returnPageInfo: check

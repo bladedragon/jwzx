@@ -72,9 +72,9 @@ public class GradeServiceImp implements GradeService {
         GradeResponse response = new GradeResponse();
 
             result = gradeMapper.SelectByStuNum(stu_name);
-            System.out.println(result.isEmpty());
+//            System.out.println(result.isEmpty());
             if (!result.isEmpty()) {
-                System.out.println("运行了数据库查询");
+//                System.out.println("运行了数据库查询");
                 response.setStatus(200);
                 response.setInfo("success");
                 response.setStuNum(stu_name);
@@ -83,7 +83,7 @@ public class GradeServiceImp implements GradeService {
                 response.setData(result);
                 return response;
             }else{
-                System.out.println("运行了接口查询");
+//                System.out.println("运行了接口查询");
                 return getGradeInfoFromIf(stu_name,id_num);
             }
 
@@ -91,7 +91,7 @@ public class GradeServiceImp implements GradeService {
     }
     @CacheEvict(value = "gradeUser",allEntries = true)
     public void deleteGradeCache(){
-        System.out.println("清除缓存");
+//        System.out.println("清除缓存");
     }
 
 

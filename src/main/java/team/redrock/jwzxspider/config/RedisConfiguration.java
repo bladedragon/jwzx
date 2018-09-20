@@ -70,7 +70,7 @@ public class RedisConfiguration
 
         //user信息缓存配置
         RedisCacheConfiguration gradeCacheConfiguration = defaultCacheConfig.entryTtl(Duration.ofHours(5)).prefixKeysWith("gradeUser");
-        RedisCacheConfiguration newsCacheConfiguration = defaultCacheConfig.entryTtl(Duration.ofSeconds(30)).prefixKeysWith("newsUser");
+        RedisCacheConfiguration newsCacheConfiguration = defaultCacheConfig.entryTtl(Duration.ofDays(1)).prefixKeysWith("newsUser");
         Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>();
         redisCacheConfigurationMap.put("gradeUser", gradeCacheConfiguration);
         redisCacheConfigurationMap.put("newsUser", newsCacheConfiguration);

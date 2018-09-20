@@ -51,32 +51,30 @@ if(normalUtils.isInteger(week)||normalUtils.isInteger(weekdayNum)||normalUtils.i
     if(Integer.parseInt(week)>0||Integer.parseInt(week)<8||Integer.parseInt(week)<0||Integer.parseInt(sectionNum)<0||Integer.parseInt(sectionNum)>5) {
         String key = week + "-" + weekdayNum + "-" + sectionNum;
        Boolean isExist =  emptyRoomRedisTemplate.opsForHash().hasKey("EmptyRoom", key);
-        System.out.println("打印result："+result);
-        System.out.println(key);
-        System.out.println("isExist"+isExist);
+
 
         if (!isExist) {
             synchronized (this) {
-//                List<String> strs1 = (List<String>) redisTemplate.opsForHash().get("EmptyRoom", key);
+
                 if (!emptyRoomRedisTemplate.opsForHash().hasKey("EmptyRoom", key)) {
                      str = selectEmpty(weekdayNum, sectionNum, week,emptyResponse);
-//                     result = (EmptyRoom) emptyRoomRedisTemplate.opsForHash().get("EmptyRoom", key);
-                    System.out.println("调用空教室接口"+str);
+
+//                    System.out.println("调用空教室接口"+str);
                 } else {
                     result = (EmptyRoom) emptyRoomRedisTemplate.opsForHash().get("EmptyRoom", key);
                     str = result.getData();
-                    System.out.println("调用空教室缓存");
+//                    System.out.println("调用空教室缓存");
                 }
             }
         } else {
             result = (EmptyRoom) emptyRoomRedisTemplate.opsForHash().get("EmptyRoom", key);
             str = result.getData();
-//            str = (String) emptyRoomRedisTemplate.opsForHash().get("EmptyRoom", key);
-            System.out.println("调用空教室缓存");
+
+//            System.out.println("调用空教室缓存");
         }
     }
 
-        System.out.println("result:"+str);
+//        System.out.println("result:"+str);
         List<String> results = normalUtils.selectBuild(buildNum,str);
         emptyResponse.setStatus(200);
 //        emptyResponse.setBuildNum(String.valueOf(buildNum));
@@ -118,21 +116,21 @@ if(normalUtils.isInteger(week)||normalUtils.isInteger(weekdayNum)||normalUtils.i
         List<String> results = new ArrayList<>();
 
         String url = emptyUrl+"zc="+week+"&xq="+weekdayNum+"&sd="+sectionNum;
-            System.out.println(url);
+
             Connection con = Jsoup.connect(url);
 
             String falhname = week+"-"+weekdayNum+"-"+sectionNum;
 
             try {
                 results = emptyAnalyzer.getEmptyRoomt(con.timeout(5000).get(),emptyResponse);
-                System.out.println("从接口得到的result"+results);
+//                System.out.println("从接口得到的result"+results);
                 er.setData(results);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             emptyRoomRedisTemplate.opsForHash().put("EmptyRoom",falhname, er);
-                emptyRoomRedisTemplate.expire("EmptyRoom",30, TimeUnit.SECONDS);
-            System.out.println(JSONObject.toJSON(results));
+                emptyRoomRedisTemplate.expire("EmptyRoom",1, TimeUnit.HOURS);
+
 
         return results;
     }
@@ -142,7 +140,7 @@ if(normalUtils.isInteger(week)||normalUtils.isInteger(weekdayNum)||normalUtils.i
             emptyUrl = "http://jwzx.cqupt.edu.cn/jssq/jssqEmptyRoom.php?";
         }
         String url = emptyUrl+"zc="+week+"&xq="+weekdayNum+"&sd="+sectionNum;
-        System.out.println(url);
+//        System.out.println(url);
         Connection con = Jsoup.connect(url);
         EmptyResponse emptyResponse = new EmptyResponse();
         List<String> results = new ArrayList<>();
@@ -161,6 +159,6 @@ if(normalUtils.isInteger(week)||normalUtils.isInteger(weekdayNum)||normalUtils.i
 
     public void deleteCahce(){
         emptyRoomRedisTemplate.delete("EmptyRoom");
-        System.out.println("清除缓存");
+//        System.out.println("清除缓存");
     }
 }

@@ -77,7 +77,7 @@ String verUrl = "http://hongyan.cqupt.edu.cn/api/verify";
              String[] strs =  matcher.group(0).split(":");
              String str = strs[1].replace(",","");
              status = str;
-            System.out.println("status:"+status);
+//            System.out.println("status:"+status);
         }
         if(status.equals("200"))
             return true;

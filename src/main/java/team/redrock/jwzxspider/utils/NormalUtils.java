@@ -50,11 +50,11 @@ public class NormalUtils {
         return selectedrooms;
     }
 
-    public static void main(String[] args) {
-//        String num  = "q";
-//        System.out.println(Integer.parseInt(num));
-        List<String> selectedrooms = new ArrayList<>();
-        selectedrooms.add("2030");
-
-    }
+//    public static void main(String[] args) {
+////        String num  = "q";
+////        System.out.println(Integer.parseInt(num));
+//        List<String> selectedrooms = new ArrayList<>();
+//        selectedrooms.add("2030");
+//
+//    }
 }

@@ -131,15 +131,15 @@ public class NewsServiceImp implements NewsService {
 //            response.setStatus(200);
 //            response.setInfo("success");
 //        }else{
-            System.out.println("新闻内容用接口查询");
-            System.out.println("id="+id);
+//            System.out.println("新闻内容用接口查询");
+//            System.out.println("id="+id);
             return getContentFromIp(id);
 //        }
 //        return response;
     }
     @CacheEvict(value = "newsUser",allEntries = true)
     public void deleteNewslist(){
-        System.out.println("清除缓存");
+//        System.out.println("清除缓存");
     }
 
 }
